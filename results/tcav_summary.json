@@ -1,0 +1,48 @@
+{
+    "model": "GoogLeNet ImageNet pretrained; frozen",
+    "target_class": "zebra",
+    "target_class_index": 340,
+    "concept": "stripes",
+    "control_group": "non-stripes",
+    "evaluation_split": "test",
+    "layer": "inception4d",
+    "cav_method": "StandardScaler + L2-regularized LinearSVC",
+    "svm_C": 0.1,
+    "num_runs": 500,
+    "num_target_images": 185,
+    "num_concept_images": 114,
+    "num_control_images": 114,
+    "mean_tcav_score": 0.7338594594594594,
+    "std_tcav_score": 0.12832339794809544,
+    "exploratory_95_percent_t_interval_for_mean_tcav": [
+        0.7225842766816114,
+        0.7451346422373074
+    ],
+    "mean_cav_training_accuracy": 1.0,
+    "mean_cav_validation_accuracy": 0.9845652173913042,
+    "mean_train_validation_gap": 0.015434782608695642,
+    "mean_zebra_probability": 0.8687255616173954,
+    "exploratory_t_statistic_vs_0_5": 40.75060798687872,
+    "exploratory_p_value_vs_0_5": 7.224442156868169e-161,
+    "frozen_googlenet_binary_detection": {
+        "num_images": 365,
+        "accuracy": 0.9726027397260274,
+        "precision": 0.9834254143646409,
+        "recall": 0.9621621621621622,
+        "f1_score": 0.9726775956284153,
+        "confusion_matrix": [
+            [
+                177,
+                3
+            ],
+            [
+                7,
+                178
+            ]
+        ],
+        "mean_zebra_probability": 0.44646695202188813,
+        "prediction_rule": "Predicted zebra if GoogLeNet top-1 ImageNet class is zebra."
+    },
+    "statistical_note": "The t-test over repeated CAV fits is exploratory because the same target images and fixed concept validation split are reused. Interpret the p-value cautiously.",
+    "interpretation_note": "TCAV score is the fraction of target zebra images with a positive directional derivative along the learned stripe CAV. It is not classification accuracy and does not prove causal reasoning. GoogLeNet remains frozen."
+}
